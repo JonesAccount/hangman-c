@@ -52,6 +52,8 @@ int main(void) {
         handle_game_input(&selected_letter, alphabetto_check_selected_letters, &is_space_pressed_or_not);
         clear_screen();
     }
+    
+    //----------------------------------------------------------------------
 
     return 0;
 }
