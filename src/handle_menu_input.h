@@ -1,16 +1,8 @@
-#include <ctype.h>
+#ifndef HANDLE_MENU_INPUT_H
+#define HANDLE_MENU_INPUT_H
 
-#include "utils.h"
+#include <stdbool.h>
 
-void handle_menu_input(bool *menuPtr, bool *gamePtr, bool *selectedPtr) {
-    char ch = tolower(read_char());
-    
-    switch (ch) {
-        case 'w': *selectedPtr = true; break;
-        case 's': *selectedPtr = false; break;
-        case 'y':
-            *menuPtr = false;
-            if (*selectedPtr) { *gamePtr = true; }
-    }
-    
-}
+void handle_menu_input(bool *menuPtr, bool *gamePtr, bool *selectedPtr);
+
+#endif

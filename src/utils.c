@@ -2,6 +2,8 @@
 #include <unistd.h>
 #include <stdio.h>
 
+#include "utils.h"
+
 void clear_screen(void) {
     fputs("\033[2J\033[H", stdout);
     fflush(stdout);
