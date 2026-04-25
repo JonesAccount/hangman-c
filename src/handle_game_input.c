@@ -4,7 +4,7 @@
 #include "utils.h"
 
 void handle_game_input(char *selected_letterPtr, char *alphabetto_check_selected_lettersPtr, bool *is_space_pressed_or_notPtr) {
-    *selected_letterPtr = '\0';
+    //*selected_letterPtr = '\0';
 	char ch = tolower(read_char());
 
     // check for the letter pressed or not

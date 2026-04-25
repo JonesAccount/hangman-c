@@ -45,7 +45,11 @@ void render_game(int player_attempts, char *word_guess, char *alphabet, char *se
         	if (tolower(*(alphabetto_check_selected_lettersPtr + j)) == letter) { check_selected = true; }
         }
 
-        if (*selected_letterPtr == letter) { printf("%s", (!check_selected) ? "\033[33m" : "\033[90m"); }
+        if (*selected_letterPtr == letter) {
+        	printf("\033[33m");
+        } else if (check_selected) {
+        	printf("\033[31m"); 
+        }
 
         printf("%c " RESET, letter);
 
