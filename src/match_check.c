@@ -21,7 +21,7 @@ void match_check(char *word_guess, char *selected_letterPtr, char *render_guess_
          printf("%c ", *(render_guess_letsPtr + i));
      }
     
-    // проверяем есть ли такая буква, если есть, рендерим, иначе минус жизнь
+    // check if there is such a letter, if so, show the letter, otherwise minus life
     if (*is_space_pressed_or_notPtr) {
         for (int i = 0; i < word_length; i++) {
             if (*(word_guess + i) == tolower(*selected_letterPtr)) {
