@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 #include "render_menu.h"
 #include "handle_menu_input.h"
@@ -14,51 +15,41 @@
 
 int main(void) {
     printf("\033[?25l");
+    srand(time(NULL));
 
     bool running_menu = true;
     bool running_game = false;
     bool selected_option = true;
 
-    bool *menuPtr = &running_menu;
-    bool *gamePtr = &running_game;
-    bool *selectedPtr = &selected_option;
-
     while (running_menu) {
         render_menu(selected_option);
-        handle_menu_input(menuPtr, gamePtr, selectedPtr);
+        handle_menu_input(&running_menu, &running_game, &selected_option);
         clear_screen();
     }
 
+    //----------------------------------------------------------------------
     int player_attempts = 11;
-    int *player_attemptsPtr = &player_attempts;
-
     bool is_space_pressed_or_not = false;
-    bool *is_space_pressed_or_notPtr = &is_space_pressed_or_not;
-
-    char alphabet[] = {"QWERTYUIOPASDFGHJKLZXCVBNM"};
-    char alphabetto_check_selected_letters[26];
+    char alphabet[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    char alphabetto_check_selected_letters[26] = {0};
     char selected_letter = '0';
 
-
+    //----------------------------------------------------------------------
     char *words[] = {"bird", "dord", "buhe"};
     int choice_word = rand() % 3;
-
-    char word_guess[strlen(*(words + choice_word))];
+    int word_guess_length = strlen(*(words + choice_word)) + 1;
+    char word_guess[word_guess_length];
     strcpy(word_guess, words[choice_word]);
-    char render_guess_lets[strlen(*(words + choice_word))];
+    char render_guess_lets[word_guess_length];
 
-    for (int i = 0; i < strlen(*(words + choice_word)); i++) {
+    for (int i = 0; i < word_guess_length - 1; i++) {
         render_guess_lets[i] = '_';
     }
-
-
-    char *alphabetto_check_selected_lettersPtr = alphabetto_check_selected_letters;
-    char *selected_letterPtr = &selected_letter;
-    char *render_guess_letsPtr = render_guess_lets;
-
+    
+    //----------------------------------------------------------------------
     while (running_game) {
-        render_game(player_attempts, word_guess, alphabet, selected_letterPtr, alphabetto_check_selected_lettersPtr, render_guess_letsPtr, player_attemptsPtr, is_space_pressed_or_notPtr);
-        handle_game_input(selected_letterPtr, alphabetto_check_selected_lettersPtr, is_space_pressed_or_notPtr);
+        render_game(player_attempts, word_guess, alphabet, &selected_letter, alphabetto_check_selected_letters, render_guess_lets, &player_attempts, &is_space_pressed_or_not);
+        handle_game_input(&selected_letter, alphabetto_check_selected_letters, &is_space_pressed_or_not);
         clear_screen();
     }
 
