@@ -3,6 +3,7 @@
 
 #include "match_check.h"
 #include "render_game.h"
+#include "utils.h"
 #include "defs.h"
 
 void render_game(int player_attempts, char *word_guess, char *alphabet, char *selected_letterPtr, char *alphabetto_check_selected_lettersPtr, char *render_guess_letsPtr, int *player_attemptsPtr, bool *is_space_pressed_or_notPtr) {
@@ -32,6 +33,12 @@ void render_game(int player_attempts, char *word_guess, char *alphabet, char *se
     // place for a word
     match_check(word_guess, selected_letterPtr, render_guess_letsPtr, player_attemptsPtr, is_space_pressed_or_notPtr);
 
+    if (*selected_letterPtr != '0') {
+    	*selected_letterPtr = '0';
+    	render_game(player_attempts, word_guess, alphabet, selected_letterPtr, alphabetto_check_selected_lettersPtr, render_guess_letsPtr, player_attemptsPtr, is_space_pressed_or_notPtr);
+     	clear_screen();
+    }
+    
     // english alphabet
     for (int i = 0; i < 26; i++) {
         if (!i) { printf(N N T "     "); }
@@ -42,13 +49,13 @@ void render_game(int player_attempts, char *word_guess, char *alphabet, char *se
         bool check_selected = false;
 
         for (int j = 0; j < 26; j++) {
-        	if (tolower(*(alphabetto_check_selected_lettersPtr + j)) == letter) { check_selected = true; }
+        	if (*(alphabetto_check_selected_lettersPtr + j) == letter) { check_selected = true; }
         }
 
         if (*selected_letterPtr == letter) {
         	printf("\033[33m");
         } else if (check_selected) {
-        	printf("\033[31m"); 
+        	printf("\033[90m"); 
         }
 
         printf("%c " RESET, letter);

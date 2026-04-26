@@ -35,7 +35,7 @@ int main(void) {
     char selected_letter = '0';
 
     //----------------------------------------------------------------------
-    char *words[] = {"bird", "dord", "buhe"};
+    char *words[] = {"bird", "bird", "bird"};
     int choice_word = rand() % 3;
     int word_guess_length = strlen(*(words + choice_word)) + 1;
     char word_guess[word_guess_length];
