@@ -8,7 +8,6 @@
 #include "handle_menu_input.h"
 
 #include "handle_game_input.h"
-#include "match_check.h"
 #include "render_game.h"
 
 #include "utils.h"

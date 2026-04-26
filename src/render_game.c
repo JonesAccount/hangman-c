@@ -3,11 +3,11 @@
 
 #include "match_check.h"
 #include "render_game.h"
-#include "utils.h"
 #include "defs.h"
 
 void render_game(int player_attempts, char *word_guess, char *alphabet, char *selected_letterPtr, char *alphabetto_check_selected_lettersPtr, char *render_guess_letsPtr, int *player_attemptsPtr, bool *is_space_pressed_or_notPtr) {
-    const char HANGMAN[11][80] = {
+   /* 
+	const char HANGMAN[11][80] = {
     	"|" N "|" N "|" N "|___                                                         ",
      	" __" N "|/" N "|" N "|" N "|" N "|" N "|" N "|___                              ",
       	" __" N "|/   |" N "|" N "|" N "|" N "|" N "|" N "|___                          ",
@@ -19,6 +19,21 @@ void render_game(int player_attempts, char *word_guess, char *alphabet, char *se
         " __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   /" N "|" N "|___   ",
         " __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   / \\" N "|" N "|___",
         " __" N "|/   |" N "|   (_) " N "|   /|\\" N "|    |" N "|   | |" N "|" N "|___ "
+    };
+    */
+    
+    const char HANGMAN[11][80] = {
+    	" __" N "|/   |" N "|   (_) " N "|   /|\\" N "|    |" N "|   | |" N "|" N "|___ ",
+     	" __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   / \\" N "|" N "|___",
+      	" __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   /" N "|" N "|___   ",
+       	" __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|" N "|" N "|___       ",
+        " __" N "|/   |" N "|   (_) " N "|   \\|" N "|    |" N "|" N "|" N "|___        ",
+        " __" N "|/   |" N "|   (_) " N "|    |" N "|    |" N "|" N "|" N "|___         ",
+        " __" N "|/   |" N "|   (_) " N "|" N "|" N "|" N "|" N "|___                   ",
+        " __" N "|/   |" N "|   (" N "|" N "|" N "|" N "|" N "|___                      ",
+        " __" N "|/   |" N "|" N "|" N "|" N "|" N "|" N "|___                          ",
+        " __" N "|/" N "|" N "|" N "|" N "|" N "|" N "|___                              ",
+        "|" N "|" N "|" N "|___                                                         "
     };
 
     if (player_attempts <= 9) { printf(N T T); }
@@ -32,12 +47,6 @@ void render_game(int player_attempts, char *word_guess, char *alphabet, char *se
 
     // place for a word
     match_check(word_guess, selected_letterPtr, render_guess_letsPtr, player_attemptsPtr, is_space_pressed_or_notPtr);
-
-    if (*selected_letterPtr != '0') {
-    	*selected_letterPtr = '0';
-    	render_game(player_attempts, word_guess, alphabet, selected_letterPtr, alphabetto_check_selected_lettersPtr, render_guess_letsPtr, player_attemptsPtr, is_space_pressed_or_notPtr);
-     	clear_screen();
-    }
     
     // english alphabet
     for (int i = 0; i < 26; i++) {
