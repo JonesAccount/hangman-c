@@ -6,44 +6,22 @@
 #include "defs.h"
 
 void render_game(int player_attempts, char *word_guess, char *alphabet, char *selected_letterPtr, char *alphabetto_check_selected_lettersPtr, char *render_guess_letsPtr, int *player_attemptsPtr, bool *is_space_pressed_or_notPtr) {
-   /* 
-	const char HANGMAN[11][80] = {
-    	"|" N "|" N "|" N "|___                                                         ",
-     	" __" N "|/" N "|" N "|" N "|" N "|" N "|" N "|___                              ",
-      	" __" N "|/   |" N "|" N "|" N "|" N "|" N "|" N "|___                          ",
-        " __" N "|/   |" N "|   (" N "|" N "|" N "|" N "|" N "|___                      ",
-        " __" N "|/   |" N "|   (_) " N "|" N "|" N "|" N "|" N "|___                   ",
-        " __" N "|/   |" N "|   (_) " N "|    |" N "|    |" N "|" N "|" N "|___         ",
-        " __" N "|/   |" N "|   (_) " N "|   \\|" N "|    |" N "|" N "|" N "|___        ",
-        " __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|" N "|" N "|___       ",
-        " __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   /" N "|" N "|___   ",
-        " __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   / \\" N "|" N "|___",
-        " __" N "|/   |" N "|   (_) " N "|   /|\\" N "|    |" N "|   | |" N "|" N "|___ "
-    };
-    */
-    
-    const char HANGMAN[11][80] = {
-    	" __" N "|/   |" N "|   (_) " N "|   /|\\" N "|    |" N "|   | |" N "|" N "|___ ",
-     	" __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   / \\" N "|" N "|___",
-      	" __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|   /" N "|" N "|___   ",
-       	" __" N "|/   |" N "|   (_) " N "|   \\|/" N "|    |" N "|" N "|" N "|___       ",
-        " __" N "|/   |" N "|   (_) " N "|   \\|" N "|    |" N "|" N "|" N "|___        ",
-        " __" N "|/   |" N "|   (_) " N "|    |" N "|    |" N "|" N "|" N "|___         ",
-        " __" N "|/   |" N "|   (_) " N "|" N "|" N "|" N "|" N "|___                   ",
-        " __" N "|/   |" N "|   (" N "|" N "|" N "|" N "|" N "|___                      ",
-        " __" N "|/   |" N "|" N "|" N "|" N "|" N "|" N "|___                          ",
-        " __" N "|/" N "|" N "|" N "|" N "|" N "|" N "|___                              ",
-        "|" N "|" N "|" N "|___                                                         "
-    };
+	const char hangman[12][100] = {
+    	N T T "    ____" N T T "   |/   |" N T T "   |   (_) " N T T "   |   /|\\" N T T "   |    |" N T T "   |   | |" N T T "   |" N T T "   |____",
+     	N T T "    ____" N T T "   |/   |" N T T "   |   (_) " N T T "   |   \\|/" N T T "   |    |" N T T "   |   / \\" N T T "   |" N T T "   |____",
+      	N T T "    ____" N T T "   |/   |" N T T "   |   (_) " N T T "   |   \\|/" N T T "   |    |" N T T "   |   /" N T T "   |" N T T "   |____",
+       	N T T "    ____" N T T "   |/   |" N T T "   |   (_) " N T T "   |   \\|/" N T T "   |    |" N T T "   |" N T T "   |" N T T "   |____",
+        N T T "    ____" N T T "   |/   |" N T T "   |   (_) " N T T "   |   \\|" N T T "   |    |" N T T "   |" N T T "   |" N T T "   |____",
+        N T T "    ____" N T T "   |/   |" N T T "   |   (_) " N T T "   |    |" N T T "   |    |" N T T "   |" N T T "   |" N T T "   |____",
+        N T T "    ____" N T T "   |/   |" N T T "   |   (_) " N T T "   |" N T T "   |" N T T "   |" N T T "   |" N T T "   |____",
+        N T T "    ____" N T T "   |/   |" N T T "   |   (" N T T "   |" N T T "   |" N T T "   |" N T T "   |" N T T "   |____",
+        N T T "    ____" N T T "   |/   |" N T T "   |" N T T "   |" N T T "   |" N T T "   |" N T T "   |" N T T "   |____",
+        N T T "    _" N T T "   |/" N T T "   |" N T T "   |" N T T "   |" N T T "   |" N T T "   |" N T T "   |____",
+        N N N N N T T "   |" N T T "   |" N T T "   |" N T T "   |____",
+        N N N N N N N N T T "   |____"
+};
 
-    if (player_attempts <= 9) { printf(N T T); }
-
-    switch (player_attempts) {
-        case 11: printf(N N N N N N N N T T "   |___"); break;
-        default: printf("   %s", HANGMAN[player_attempts]);
-    }
-
-    if (player_attempts <= 10) { printf(N T T); }
+    printf("%s", hangman[player_attempts]);
 
     // place for a word
     match_check(word_guess, selected_letterPtr, render_guess_letsPtr, player_attemptsPtr, is_space_pressed_or_notPtr);

@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <time.h>
 
+#include "check_lifes.h"
+
 #include "render_menu.h"
 #include "handle_menu_input.h"
 
@@ -44,14 +46,15 @@ int main(void) {
     for (int i = 0; i < word_guess_length - 1; i++) {
         render_guess_lets[i] = '_';
     }
-    
+
     //----------------------------------------------------------------------
     while (running_game) {
+    	check_lifes_func(&is_space_pressed_or_not, word_guess, &selected_letter, render_guess_lets, &player_attempts);
         render_game(player_attempts, word_guess, alphabet, &selected_letter, alphabetto_check_selected_letters, render_guess_lets, &player_attempts, &is_space_pressed_or_not);
         handle_game_input(&selected_letter, alphabetto_check_selected_letters, &is_space_pressed_or_not);
         clear_screen();
     }
-    
+
     //----------------------------------------------------------------------
 
     return 0;
