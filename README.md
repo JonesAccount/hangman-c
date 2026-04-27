@@ -19,13 +19,13 @@ A classic Hangman game running in the terminal, written in C.
 ![screenshot two](screenshots/screenshot_2.jpeg)
 
 ## Build & Run
-\```bash
+```bash
 cd src
 gcc *.c -o hangman && ./hangman
-\```
+```
 
 ## Project Structure
-\```
+```
 src/
 ├── main.c
 ├── render_game.c / .h
@@ -37,4 +37,4 @@ src/
 ├── match_check.c / .h
 ├── utils.c / .h
 └── defs.h
-\```
+```
