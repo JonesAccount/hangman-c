@@ -3,12 +3,11 @@
 #include "handle_game_input.h"
 #include "utils.h"
 
-void handle_game_input(char *selected_letterPtr, char *alphabetto_check_selected_lettersPtr, bool *is_space_pressed_or_notPtr) {
+void handle_game_input(char *selected_letterPtr, char *alphabetto_check_selected_lettersPtr, bool *is_space_pressed_or_notPtr, int *index_selected_letters) {
 	char ch = tolower(read_char());
 
     // check for the letter pressed or not
     bool check_selected = false;
-    static int index_selected_letters = 0;
 
     if (isalpha(ch)) {
    		for (int i = 0; i < 26; i++) {
@@ -25,8 +24,8 @@ void handle_game_input(char *selected_letterPtr, char *alphabetto_check_selected
                 if (*(alphabetto_check_selected_lettersPtr + i) == *selected_letterPtr) { check_selected = true; }
             }
             if (!check_selected) {
-                alphabetto_check_selected_lettersPtr[index_selected_letters] = *selected_letterPtr;
-                index_selected_letters++;
+                alphabetto_check_selected_lettersPtr[*index_selected_letters] = *selected_letterPtr;
+                (*index_selected_letters)++;
             }
         }
     }

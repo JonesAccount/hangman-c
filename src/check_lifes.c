@@ -16,7 +16,7 @@ void check_lifes_func(bool *is_space_pressed_or_notPtr, char *word_guess, char *
 
        	int is_the_choice_mistake = 0;
         for (int i = 0; i < word_length; i++) {
-         	if (tolower(*(word_guess + i)) != tolower(*selected_letterPtr)) {
+         	if (*(word_guess + i) != tolower(*selected_letterPtr)) {
              	is_the_choice_mistake++;
          	}
         }
