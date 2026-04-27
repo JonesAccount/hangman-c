@@ -32,8 +32,18 @@ int main(void) {
     char selected_letter = '0';
     
     //----------------------------------------------------------------------
-    char *words[] = {"bird", "bird", "bird"};
-    int choice_word = rand() % 3;
+    char *words[] = {
+        "ant", "baboon", "badger", "bat", "bear", "beaver", "camel", "cat",
+        "clam", "cobra", "cougar", "coyote", "crow", "deer", "dog", "donkey",
+        "duck", "eagle", "ferret", "fox", "frog", "goat", "goose", "hawk",
+        "lion", "lizard", "llama", "mole", "monkey", "moose", "mouse", "mule",
+        "newt", "otter", "owl", "panda", "parrot", "pigeon", "python", "rabbit",
+        "ram", "rat", "raven", "rhino", "salmon", "seal", "shark", "sheep",
+        "skunk", "sloth", "snake", "spider", "stork", "swan", "tiger", "toad",
+        "trout", "turkey", "turtle", "weasel", "whale", "wolf", "wombat", "zebra"
+    };
+    int words_count = sizeof(words) / sizeof(words[0]);
+    int choice_word = rand() % words_count;
     int word_guess_length = strlen(*(words + choice_word)) + 1;
     char word_guess[word_guess_length];
     strcpy(word_guess, words[choice_word]);
@@ -42,6 +52,8 @@ int main(void) {
     for (int i = 0; i < word_guess_length - 1; i++) {
         render_guess_lets[i] = '_';
     }
+    
+    render_guess_lets[word_guess_length - 1] = '\0';
     
     size_t render_guess_lets_size = sizeof(render_guess_lets) / sizeof(render_guess_lets[0]);
     
@@ -97,3 +109,4 @@ int main(void) {
          'stork swan tiger toad trout turkey turtle weasel whale wolf '
          'wombat zebra ').split()
  */
+char *words[] = {"bird", "tip", "oba"};
