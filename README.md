@@ -1,3 +1,3 @@
 # hangman-c
 
-![screenshot](sceenshots_1)
+![screenshot](screenshots/sceenshots_1.jpeg)
