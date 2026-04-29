@@ -2,7 +2,7 @@
 
 ![Demo](assets/demo.gif)
 
-A classic Hangman game running in the terminal, written in C.
+> A classic Hangman game running in the terminal, written in C.
 
 ## Features
 - Random word selection from a pool of 64 words
