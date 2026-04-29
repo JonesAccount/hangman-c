@@ -1,19 +1,20 @@
 // utils.c
+// Utility functions used across the game
 
 #include <termios.h>
 #include <unistd.h>
 #include <stdio.h>
 
-//----------------------------------------------------------------------
 #include "utils.h"
 
-//----------------------------------------------------------------------
+// Clears the terminal screen
 void clear_screen(void) {
-    fputs("\033[2J\033[H", stdout);
-    fflush(stdout);
+    fputs("\033[2J\033[H", stdout); // ANSI escape - clear screen and cursor to top
+    fflush(stdout);                 // fflush output buffer
 }
 
-//----------------------------------------------------------------------
+// Reads one character from keyboard without waiting for Enter
+// Returns the pressed character
 char read_char(void) {
     struct termios oldt, newt;
     char ch;
