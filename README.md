@@ -1,5 +1,7 @@
 # Hangman CLI
 
+![Demo](assets/demo.gif)
+
 A classic Hangman game running in the terminal, written in C.
 
 ## Features
@@ -14,9 +16,6 @@ A classic Hangman game running in the terminal, written in C.
 2. Navigate the keyboard with arrow keys, select a letter
 3. Press **Space** to confirm your choice
 4. Guess the word before you run out of attempts
-
-![screenshot one](assets/screenshot_1.jpeg)
-![screenshot two](assets/screenshot_2.jpeg)
 
 ## Build & Run
 ```bash
