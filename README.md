@@ -15,8 +15,8 @@ A classic Hangman game running in the terminal, written in C.
 3. Press **Space** to confirm your choice
 4. Guess the word before you run out of attempts
 
-![screenshot one](screenshots/screenshot_1.jpeg)
-![screenshot two](screenshots/screenshot_2.jpeg)
+![screenshot one](assets/screenshot_1.jpeg)
+![screenshot two](assets/screenshot_2.jpeg)
 
 ## Build & Run
 ```bash
